@@ -62,11 +62,9 @@ export default function Login() {
     <div className="min-h-screen flex items-center justify-center 
                     bg-gradient-to-br from-pink-100 via-purple-100 to-indigo-100 px-4">
 
-     
       <div className="backdrop-blur-xl bg-white/80 p-8 rounded-3xl shadow-2xl 
                       w-full max-w-md border border-white/40">
 
-      
         <h2 className="text-3xl font-extrabold text-center text-gray-800">
           Welcome Back
         </h2>
@@ -74,7 +72,7 @@ export default function Login() {
           Login to continue your journey
         </p>
 
-        {/* Email */}
+      
         <div className="mb-4">
           <label className="text-sm text-gray-600">Email</label>
           <input
@@ -82,7 +80,7 @@ export default function Login() {
             placeholder="Enter your email"
             className="w-full mt-1 p-3 rounded-xl border border-gray-300 
                        focus:outline-none focus:ring-2 focus:ring-purple-500 
-                       bg-white shadow-sm"
+                       bg-white shadow-sm text-gray-900"
             value={form.email}
             onChange={(e) =>
               setForm({ ...form, email: e.target.value })
@@ -90,7 +88,7 @@ export default function Login() {
           />
         </div>
 
-        {/* Password */}
+       
         <div className="mb-5">
           <label className="text-sm text-gray-600">Password</label>
           <input
@@ -98,7 +96,7 @@ export default function Login() {
             placeholder="Enter your password"
             className="w-full mt-1 p-3 rounded-xl border border-gray-300 
                        focus:outline-none focus:ring-2 focus:ring-purple-500 
-                       bg-white shadow-sm"
+                       bg-white shadow-sm text-gray-900"
             value={form.password}
             onChange={(e) =>
               setForm({ ...form, password: e.target.value })
@@ -106,7 +104,7 @@ export default function Login() {
           />
         </div>
 
-        {/* Login Button */}
+     
         <button
           onClick={handleLogin}
           disabled={loading}
@@ -119,14 +117,13 @@ export default function Login() {
           {loading ? "Logging in..." : "Login"}
         </button>
 
-        {/* Divider */}
+      
         <div className="flex items-center my-5">
           <div className="flex-grow h-px bg-gray-300"></div>
           <span className="px-3 text-sm text-gray-500">OR</span>
           <div className="flex-grow h-px bg-gray-300"></div>
         </div>
 
-      
         <p className="text-center text-sm text-gray-600">
           Don’t have an account?{" "}
           <span

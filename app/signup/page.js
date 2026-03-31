@@ -1,6 +1,3 @@
-
-
-
 "use client";
 
 import { useState } from "react";
@@ -53,10 +50,8 @@ export default function Signup() {
     <div className="min-h-screen flex items-center justify-center 
                     bg-gradient-to-br from-pink-100 via-purple-100 to-indigo-100 px-4">
 
-     
       <div className="bg-white p-8 rounded-3xl shadow-2xl w-full max-w-md">
 
-       
         <h2 className="text-3xl font-bold text-center text-gray-800">
           Create Account
         </h2>
@@ -64,41 +59,37 @@ export default function Signup() {
           Join us and start your journey
         </p>
 
-       
         <input
           type="text"
           placeholder="Your Name"
-          className="w-full p-3 mb-3 rounded-xl border border-gray-300 
+          className="w-full mt-1 p-3 mb-3 rounded-xl border border-gray-300 
                      focus:outline-none focus:ring-2 focus:ring-pink-400 
-                     bg-gray-50"
+                     bg-white text-gray-900 shadow-sm"
           onChange={(e) => setForm({ ...form, name: e.target.value })}
         />
 
-   
         <input
           type="email"
           placeholder="Your Email"
-          className="w-full p-3 mb-3 rounded-xl border border-gray-300 
+          className="w-full mt-1 p-3 mb-3 rounded-xl border border-gray-300 
                      focus:outline-none focus:ring-2 focus:ring-purple-400 
-                     bg-gray-50"
+                     bg-white text-gray-900 shadow-sm"
           onChange={(e) => setForm({ ...form, email: e.target.value })}
         />
 
-      
         <input
           type="password"
           placeholder="Your Password"
-          className="w-full p-3 mb-4 rounded-xl border border-gray-300 
+          className="w-full mt-1 p-3 mb-4 rounded-xl border border-gray-300 
                      focus:outline-none focus:ring-2 focus:ring-indigo-400 
-                     bg-gray-50"
+                     bg-white text-gray-900 shadow-sm"
           onChange={(e) => setForm({ ...form, password: e.target.value })}
         />
 
-      
         <select
-          className="w-full p-3 mb-5 rounded-xl border border-gray-300 
+          className="w-full mt-1 p-3 mb-5 rounded-xl border border-gray-300 
                      focus:outline-none focus:ring-2 focus:ring-purple-400 
-                     bg-gray-50"
+                     bg-white text-gray-900 shadow-sm"
           value={form.role}
           onChange={(e) => setForm({ ...form, role: e.target.value })}
         >
@@ -106,7 +97,6 @@ export default function Signup() {
           <option value="seller">💼 Seller</option>
         </select>
 
-       
         <button
           onClick={handleSignup}
           disabled={loading}
@@ -118,7 +108,6 @@ export default function Signup() {
           {loading ? "Creating Account..." : "Sign Up"}
         </button>
 
-      
         <p className="text-center text-sm text-gray-600 mt-5">
           Already have an account?{" "}
           <span
