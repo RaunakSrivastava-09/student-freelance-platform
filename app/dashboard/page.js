@@ -1,6 +1,5 @@
 
 
-
 "use client";
 
 import { useEffect, useState } from "react";
@@ -11,6 +10,7 @@ export default function Dashboard() {
 
   const fetchOrders = async () => {
     const token = localStorage.getItem("token");
+
     if (!token) {
       setOrders([]);
       setLoading(false);
@@ -20,7 +20,9 @@ export default function Dashboard() {
     try {
       const res = await fetch("/api/orders", {
         headers: { Authorization: `Bearer ${token}` },
+        cache: "no-store", // ✅ FIX: prevent mobile caching issue
       });
+
       const data = await res.json();
 
       if (Array.isArray(data)) setOrders(data);
@@ -35,13 +37,19 @@ export default function Dashboard() {
   };
 
   useEffect(() => {
-    
-    fetchOrders();
+   
+    const timer = setTimeout(() => {
+      fetchOrders();
+    }, 300);
 
-    
+    // listen for token changes
     const handleStorage = () => fetchOrders();
     window.addEventListener("storage", handleStorage);
-    return () => window.removeEventListener("storage", handleStorage);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("storage", handleStorage);
+    };
   }, []);
 
   const getStatusColor = (status) => {
@@ -51,7 +59,8 @@ export default function Dashboard() {
     return "text-gray-600 bg-gray-100";
   };
 
-  if (loading) return <p className="text-gray-900 text-center mt-8">Loading orders...</p>;
+  if (loading)
+    return <p className="text-gray-900 text-center mt-8">Loading orders...</p>;
 
   return (
     <div className="min-h-screen w-full bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 p-4 sm:p-6">
@@ -76,7 +85,9 @@ export default function Dashboard() {
               <p className="text-gray-700 text-sm sm:text-base mb-2 break-words">
                 {order.gigId?.description || "No description"}
               </p>
-              <p className="text-green-600 font-bold text-lg mb-2">₹{order.price}</p>
+              <p className="text-green-600 font-bold text-lg mb-2">
+                ₹{order.price}
+              </p>
               <span
                 className={`inline-block text-xs px-3 py-1 rounded-full font-medium ${getStatusColor(
                   order.status
