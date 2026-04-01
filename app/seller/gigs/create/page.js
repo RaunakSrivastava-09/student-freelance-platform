@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import { useState } from "react";
@@ -63,13 +64,13 @@ export default function CreateGig() {
 
         {/* Title */}
         <div className="mb-4">
-          <label className="text-sm text-gray-600">Title</label>
+          <label className="text-sm text-gray-700">Title</label>
           <input
             type="text"
             placeholder="Enter gig title"
             className="w-full mt-1 p-3 rounded-xl border border-gray-300 
                        focus:outline-none focus:ring-2 focus:ring-purple-500 
-                       bg-white shadow-sm"
+                       bg-white text-gray-800 placeholder-gray-400 shadow-sm"
             value={form.title}
             onChange={(e) => setForm({ ...form, title: e.target.value })}
           />
@@ -77,12 +78,12 @@ export default function CreateGig() {
 
         {/* Description */}
         <div className="mb-4">
-          <label className="text-sm text-gray-600">Description</label>
+          <label className="text-sm text-gray-700">Description</label>
           <textarea
             placeholder="Enter gig description"
             className="w-full mt-1 p-3 rounded-xl border border-gray-300 
                        focus:outline-none focus:ring-2 focus:ring-purple-500 
-                       bg-white shadow-sm"
+                       bg-white text-gray-800 placeholder-gray-400 shadow-sm"
             value={form.description}
             onChange={(e) => setForm({ ...form, description: e.target.value })}
           />
@@ -90,13 +91,13 @@ export default function CreateGig() {
 
         {/* Price */}
         <div className="mb-6">
-          <label className="text-sm text-gray-600">Price (₹)</label>
+          <label className="text-sm text-gray-700">Price (₹)</label>
           <input
             type="number"
             placeholder="Enter price"
             className="w-full mt-1 p-3 rounded-xl border border-gray-300 
                        focus:outline-none focus:ring-2 focus:ring-purple-500 
-                       bg-white shadow-sm"
+                       bg-white text-gray-800 placeholder-gray-400 shadow-sm"
             value={form.price}
             onChange={(e) => setForm({ ...form, price: e.target.value })}
           />

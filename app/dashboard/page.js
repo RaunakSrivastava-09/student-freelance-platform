@@ -21,7 +21,6 @@ export default function Dashboard() {
 
         const data = await res.json();
 
-        // Make sure data is an array
         if (Array.isArray(data)) {
           setOrders(data);
         } else if (data.orders && Array.isArray(data.orders)) {
@@ -45,20 +44,22 @@ export default function Dashboard() {
     return "text-gray-600 bg-gray-100";
   };
 
-  if (!orders) return <p>Loading orders...</p>;
+  if (!orders) return <p className="text-gray-800">Loading orders...</p>;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 p-6">
+    <div className="min-h-screen w-full bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 p-4 sm:p-6">
       <h1 className="text-3xl font-bold mb-6 text-gray-800">My Orders 📦</h1>
 
-      <div className="grid gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {orders.length === 0 ? (
-          <p>No orders found.</p>
+          <p className="text-gray-800 text-center text-lg col-span-full">
+            No orders found.
+          </p>
         ) : (
           orders.map((order) => (
             <div
               key={order._id}
-              className="bg-white p-5 rounded-xl shadow-md hover:shadow-lg transition border border-gray-200"
+              className="bg-white p-5 rounded-xl shadow-md hover:shadow-lg transition border border-gray-200 break-words max-w-full"
             >
               <h2 className="text-xl font-semibold text-gray-800 mb-1">
                 {order.gigId?.title || "Untitled Gig"}

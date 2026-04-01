@@ -1,19 +1,31 @@
 
 
-
 "use client";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
+
+  
+  const handleCreateGig = () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      router.push("/login"); 
+    } else {
+      router.push("/gigs/create"); 
+    }
+  };
+
   return (
     <div className="min-h-screen relative overflow-hidden">
-      {/* Background Gradient */}
+   
       <div className="absolute inset-0 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500"></div>
 
-      {/* Overlay */}
+     
       <div className="absolute inset-0 bg-black/30"></div>
 
-      {/* Content */}
+    
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen text-white px-4">
         <h1 className="text-5xl md:text-6xl font-extrabold mb-4 text-center">
           Student Freelance Platform 
@@ -24,7 +36,6 @@ export default function Home() {
           Build your portfolio and connect with real clients.
         </p>
 
-        
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-md">
           <Link href="/signup">
             <button className="w-full bg-white text-indigo-600 font-semibold p-4 rounded-2xl shadow-lg hover:scale-105 transition-all duration-300">
@@ -44,14 +55,15 @@ export default function Home() {
             </button>
           </Link>
 
-          <Link href="/gigs/create">
-            <button className="w-full bg-orange-500 text-white font-semibold p-4 rounded-2xl shadow-lg hover:bg-orange-600 hover:scale-105 transition-all duration-300">
-              Create Gig
-            </button>
-          </Link>
+         
+          <button
+            onClick={handleCreateGig}
+            className="w-full bg-orange-500 text-white font-semibold p-4 rounded-2xl shadow-lg hover:bg-orange-600 hover:scale-105 transition-all duration-300"
+          >
+            Create Gig
+          </button>
         </div>
 
-        
         <div className="mt-16 grid md:grid-cols-3 gap-6 max-w-5xl">
           <div className="bg-white/10 backdrop-blur-lg p-6 rounded-2xl text-center shadow-lg">
             <h3 className="text-xl font-bold mb-2">💼 Real Projects</h3>
@@ -69,7 +81,6 @@ export default function Home() {
           </div>
         </div>
 
-      
         <p className="mt-12 text-sm text-gray-300">
           © 2026 Student Freelance Platform • Built with ❤️ by me
         </p>

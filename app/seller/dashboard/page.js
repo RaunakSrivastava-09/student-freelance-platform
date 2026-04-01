@@ -75,7 +75,7 @@ export default function SellerDashboard() {
   return (
     <div className="p-6 bg-gradient-to-br from-purple-100 via-pink-100 to-indigo-100 min-h-screen">
 
-      {/* ================= GIGS ================= */}
+      
       <h1 className="text-3xl font-bold mb-4 text-purple-700">
         My Gigs 🎯
       </h1>
