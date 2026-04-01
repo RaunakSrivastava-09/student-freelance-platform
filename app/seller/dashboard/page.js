@@ -1,6 +1,4 @@
 
-
-
 "use client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -103,7 +101,7 @@ export default function SellerDashboard() {
         </div>
       ))}
 
-      {/* ================= ORDERS ================= */}
+     
       <h1 className="text-3xl font-bold mt-10 mb-4 text-indigo-700">
         Orders Received 📦
       </h1>

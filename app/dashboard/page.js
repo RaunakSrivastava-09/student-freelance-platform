@@ -1,8 +1,8 @@
 
-
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link"; 
 
 export default function Dashboard() {
   const [orders, setOrders] = useState([]);
@@ -20,7 +20,7 @@ export default function Dashboard() {
     try {
       const res = await fetch("/api/orders", {
         headers: { Authorization: `Bearer ${token}` },
-        cache: "no-store", // ✅ FIX: prevent mobile caching issue
+        cache: "no-store",
       });
 
       const data = await res.json();
@@ -37,12 +37,10 @@ export default function Dashboard() {
   };
 
   useEffect(() => {
-   
     const timer = setTimeout(() => {
       fetchOrders();
     }, 300);
 
-    // listen for token changes
     const handleStorage = () => fetchOrders();
     window.addEventListener("storage", handleStorage);
 
@@ -95,6 +93,14 @@ export default function Dashboard() {
               >
                 {order.status}
               </span>
+
+            
+              <Link href={`/chat/${order._id}`}>
+                <button className="mt-3 bg-blue-500 hover:bg-blue-600 text-white px-4 py-1 rounded-lg shadow w-full">
+                  Chat with Seller 💬
+                </button>
+              </Link>
+
             </div>
           ))
         )}
